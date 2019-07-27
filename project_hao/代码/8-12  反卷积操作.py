@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Jun 15 09:59:37 2017
 
-@author: 代码医生 qq群：40016981，公众号：xiangyuejiqiren
-@blog：http://blog.csdn.net/lijin6249
-"""
 import numpy as np
 import tensorflow as tf 
 

@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Jun  6 14:33:30 2017
-
-@author: 代码医生 qq群：40016981，公众号：xiangyuejiqiren
-@blog：http://blog.csdn.net/lijin6249
-"""
 
 import tensorflow as tf  
 
@@ -29,7 +23,7 @@ with tf.Session() as sess:
     enqueue_threads = qr.create_threads(sess, coord = coord,start=True)  # 启动入队线程  
       
     # 主线程  
-    for i in range(0, 10):  
+    for i in range(0, 100):
         print ("-------------------------")  
         print(sess.run(queue.dequeue()))  
       

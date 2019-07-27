@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Jun 27 10:47:13 2017
 
-@author: 代码医生 qq群：40016981，公众号：xiangyuejiqiren
-@blog：http://blog.csdn.net/lijin6249
-"""
 import tensorflow as tf
 w1 = tf.Variable([[1,2]])
 w2 = tf.Variable([[3,4]])

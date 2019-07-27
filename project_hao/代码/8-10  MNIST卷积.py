@@ -59,7 +59,7 @@ nt_hpool3_flat = tf.reshape(nt_hpool3, [-1, 10])
 y_conv=tf.nn.softmax(nt_hpool3_flat)
 
 
-cross_entropy = -tf.reduce_sum(y*tf.log(y_conv))
+cross_entropy =tf.reduce_mean(-tf.reduce_sum(y*tf.log(y_conv)))
 train_step = tf.train.AdamOptimizer(1e-4).minimize(cross_entropy)
 
 correct_prediction = tf.equal(tf.argmax(y_conv,1), tf.argmax(y,1))
@@ -68,12 +68,15 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
 # 启动session
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
-    for i in range(200):#20000
+    for i in range(20000):#20000
       batch = mnist.train.next_batch(50)#50
       if i%20 == 0:
         train_accuracy = accuracy.eval(feed_dict={
             x:batch[0], y: batch[1]})
-        print( "step %d, training accuracy %g"%(i, train_accuracy))
+        loss = cross_entropy.eval(feed_dict={
+            x: batch[0], y: batch[1]})
+        print( "step %d, training accuracy %g"%(i, train_accuracy),loss)
+
       train_step.run(feed_dict={x: batch[0], y: batch[1]})
     
     print ("test accuracy %g"%accuracy.eval(feed_dict={

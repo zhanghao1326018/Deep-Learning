@@ -1,11 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Jun 27 09:32:15 2017
-
-
-@author: 代码医生 qq群：40016981，公众号：xiangyuejiqiren
-@blog：http://blog.csdn.net/lijin6249
-"""
 
 import tensorflow as tf
 

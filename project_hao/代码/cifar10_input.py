@@ -238,7 +238,7 @@ def inputs(eval_data, data_dir, batch_size):
   # Crop the central [height, width] of the image.
   resized_image = tf.image.resize_image_with_crop_or_pad(reshaped_image,
                                                          height, width)
-  #float_image = resized_image
+  # float_image = resized_image
   # Subtract off the mean and divide by the variance of the pixels.
   float_image = tf.image.per_image_standardization(resized_image)
 

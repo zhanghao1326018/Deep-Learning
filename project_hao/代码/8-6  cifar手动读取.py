@@ -1,13 +1,7 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Jun  6 05:59:16 2017
-
-@author: 代码医生 qq群：40016981，公众号：xiangyuejiqiren
-@blog：http://blog.csdn.net/lijin6249
-"""
 
 import numpy as np  
-from scipy.misc import imsave  
+# from scipy.misc import imsave
   
   
 filename = '/tmp/cifar10_data/cifar-10-batches-bin/test_batch.bin'  

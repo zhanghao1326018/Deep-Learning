@@ -78,7 +78,7 @@ b_fc3 = bias_variable([10])
 y_conv=tf.nn.softmax(tf.matmul(h_fc2, W_fc3) + b_fc3)
 
 
-cross_entropy = -tf.reduce_sum(y*tf.log(y_conv))
+cross_entropy =tf.reduce_mean( -tf.reduce_sum(y*tf.log(y_conv)))
 
 #不同的优化方法测测效果
 #train_step = tf.train.GradientDescentOptimizer(1e-3).minimize(cross_entropy)
@@ -98,10 +98,13 @@ for i in range(15000):#20000
   
   train_step.run(feed_dict={x:image_batch, y: label_b, keep_prob: 0.5},session=sess)
   
-  if i%200 == 0:
+  if i%20 == 0:
     train_accuracy = accuracy.eval(feed_dict={
         x:image_batch, y: label_b, keep_prob: 1.0},session=sess)
-    print( "step %d, training accuracy %g"%(i, train_accuracy))
+
+    loss = cross_entropy.eval(feed_dict={
+        x: image_batch, y: label_b, keep_prob: 1.0}, session=sess)
+    print( "step %d, training accuracy %g,cross_entropy "%(i, train_accuracy),loss)
 
 
 image_batch, label_batch = sess.run([images_test, labels_test])

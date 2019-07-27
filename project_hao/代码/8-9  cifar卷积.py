@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue May  9 16:54:32 2017
-@author: 代码医生 qq群：40016981，公众号：xiangyuejiqiren
-@blog：http://blog.csdn.net/lijin6249
-"""
-
 
 import cifar10_input
 import tensorflow as tf
@@ -21,11 +15,11 @@ print("begin data")
 
 
 def weight_variable(shape):
-  initial = tf.truncated_normal(shape, stddev=0.1)
+  initial = tf.truncated_normal(shape, stddev=1)
   return tf.Variable(initial)
 
 def bias_variable(shape):
-  initial = tf.constant(0.1, shape=shape)
+  initial = tf.constant(0.3, shape=shape)
   return tf.Variable(initial)
   
 def conv2d(x, W):
@@ -80,13 +74,28 @@ tf.train.start_queue_runners(sess=sess)
 for i in range(15000):#20000
   image_batch, label_batch = sess.run([images_train, labels_train])
   label_b = np.eye(10,dtype=float)[label_batch] #one hot
-  
+  # print("--------->",label_b)
   train_step.run(feed_dict={x:image_batch, y: label_b},session=sess)
   
-  if i%200 == 0:
+  if i%1 == 0:
     train_accuracy = accuracy.eval(feed_dict={
         x:image_batch, y: label_b},session=sess)
+    loss = cross_entropy.eval(feed_dict={
+        x: image_batch, y: label_b}, session=sess)
+    loss1=nt_hpool3_flat.eval(feed_dict={
+        x: image_batch, y: label_b}, session=sess)
+
+    h_conv3_ = h_conv3.eval(feed_dict={
+        x: image_batch, y: label_b}, session=sess)
+
+    h_pool1_ = h_pool1.eval(feed_dict={
+        x: image_batch, y: label_b}, session=sess)
+    x_ = x.eval(feed_dict={
+        x: image_batch, y: label_b}, session=sess)
+
+    print(sess.run(W_conv1))
     print( "step %d, training accuracy %g"%(i, train_accuracy))
+    print("step %d, loss %g" % (i, loss),label_batch)
 
 
 image_batch, label_batch = sess.run([images_test, labels_test])

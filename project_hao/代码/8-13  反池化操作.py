@@ -9,7 +9,7 @@ Created on Thu Jun 15 10:35:37 2017
 import tensorflow as tf
 import numpy as np
 
-
+#sss
 def max_pool_with_argmax(net, stride):
     _, mask = tf.nn.max_pool_with_argmax( net,ksize=[1, stride, stride, 1], strides=[1, stride, stride, 1],padding='SAME')
     mask = tf.stop_gradient(mask)
