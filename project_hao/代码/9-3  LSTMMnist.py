@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sat Jun  3 06:00:19 2017
-
-@author: 代码医生 qq群：40016981，公众号：xiangyuejiqiren
-@blog：http://blog.csdn.net/lijin6249
-"""
 
 import tensorflow as tf
 # 导入 MINST 数据集
@@ -47,7 +41,7 @@ pred = tf.contrib.layers.fully_connected(outputs[-1],n_classes,activation_fn = N
 
 learning_rate = 0.001
 training_iters = 100000
-batch_size = 128
+batch_size = 129
 display_step = 10
 
 # Define loss and optimizer
@@ -77,6 +71,8 @@ with tf.Session() as sess:
             print ("Iter " + str(step*batch_size) + ", Minibatch Loss= " + \
                   "{:.6f}".format(loss) + ", Training Accuracy= " + \
                   "{:.5f}".format(acc))
+            outputs_=sess.run(outputs, feed_dict={x: batch_x, y: batch_y})
+            print(len(outputs_),outputs_[-1].shape)
         step += 1
     print (" Finished!")
 

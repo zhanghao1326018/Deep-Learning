@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sat Jun  3 06:00:19 2017
 
-@author: 代码医生 qq群：40016981，公众号：xiangyuejiqiren
-@blog：http://blog.csdn.net/lijin6249
-"""
 import numpy as np
 import tensorflow as tf
 # 导入 MINST 数据集
@@ -22,16 +17,16 @@ batch_size = 128
 x = tf.placeholder("float", [None, n_steps, n_input])
 y = tf.placeholder("float", [None, n_classes])
 
-
+x_=tf.unstack(x,n_steps,1)
 
 stacked_rnn = []
 for iiLyr in range(3):
     stacked_rnn.append(tf.contrib.rnn.LSTMCell(n_hidden))
 mcell = tf.contrib.rnn.MultiRNNCell(stacked_rnn)
 
-outputs, states = tf.contrib.rnn.static_rnn(mcell, x, dtype=tf.float32)
+outputs, states = tf.contrib.rnn.static_rnn(mcell, x_, dtype=tf.float32)
 
-pred = tf.contrib.layers.fully_connected(outputs,n_classes,activation_fn = None)
+pred = tf.contrib.layers.fully_connected(outputs[-1],n_classes,activation_fn = None)
 
 
 

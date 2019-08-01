@@ -30,7 +30,7 @@ gradients3 = tf.gradients(y3, [ w3], grad_ys=tf.convert_to_tensor([1.,2.]))
                                                        
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
-    print(sess.run(gradients))
+    print('--->',sess.run(gradients))
     #print(sess.run(gradients2))#报错
-    print(sess.run(gradients3))
+    print('--->',sess.run(gradients3))
     

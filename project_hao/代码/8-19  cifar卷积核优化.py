@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue May  9 16:54:32 2017
-@author: 代码医生 qq群：40016981，公众号：xiangyuejiqiren
-@blog：http://blog.csdn.net/lijin6249
-"""
-
 
 import cifar10_input
 import tensorflow as tf
@@ -51,6 +45,7 @@ x_image = tf.reshape(x, [-1,24,24,3])
 
 h_conv1 = tf.nn.relu(conv2d(x_image, W_conv1) + b_conv1)
 h_pool1 = max_pool_2x2(h_conv1)
+
 #########################################################new########
 W_conv21 = weight_variable([5, 1, 64, 64])
 b_conv21 = bias_variable([64])

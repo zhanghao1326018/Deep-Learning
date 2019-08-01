@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sat May 13 06:24:52 2017
-
-@author: 代码医生 qq群：40016981，公众号：xiangyuejiqiren
-@blog：http://blog.csdn.net/lijin6249
-"""
 
 import numpy as np
 import tensorflow as tf
@@ -110,14 +104,16 @@ with tf.Session() as sess:
             batchX = x[:,start_idx:end_idx]
             batchY = y[:,start_idx:end_idx]
 
-            _total_loss, _train_step, _current_state, _predictions_series = sess.run(
-                [total_loss, train_step, current_state, predictions_series],
+            _total_loss, _train_step, _current_state, _predictions_series,_input_x,_input_y = sess.run(
+                [total_loss, train_step, current_state, predictions_series,inputs_series,labels_series],
                 feed_dict={
                     batchX_placeholder:batchX,
                     batchY_placeholder:batchY,
                     init_state:_current_state
                 })
-
+            print(_input_x)
+            print("*"*50)
+            print(_input_y)
             loss_list.append(_total_loss)
 
             if batch_idx%100 == 0:
@@ -126,26 +122,3 @@ with tf.Session() as sess:
 
 plt.ioff()
 plt.show()    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    

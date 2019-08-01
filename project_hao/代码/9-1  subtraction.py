@@ -1,21 +1,14 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Mar 30 09:43:58 2017
-
-@author: 代码医生 qq群：40016981，公众号：xiangyuejiqiren
-@blog：http://blog.csdn.net/lijin6249
-"""
-
 import copy, numpy as np
 np.random.seed(0) #随机数生成器的种子，可以每次得到一样的值
 # compute sigmoid nonlinearity
 def sigmoid(x): #激活函数
     output = 1/(1+np.exp(-x))
     return output
+
 # convert output of sigmoid function to its derivative
 def sigmoid_output_to_derivative(output):#激活函数的导数
     return output*(1-output)
-
 
 int2binary = {} #整数到其二进制表示的映射
 binary_dim = 8 #暂时制作256以内的减法

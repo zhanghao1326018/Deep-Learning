@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sat Jun  3 06:00:19 2017
-@author: 代码医生 qq群：40016981，公众号：xiangyuejiqiren
-@blog：http://blog.csdn.net/lijin6249
-"""
 
 
 import tensorflow as tf
@@ -85,8 +80,8 @@ with tf.Session() as sess:
       if i%100 == 0:
         train_accuracy = accuracy.eval(feed_dict={
             x:batch[0], y: batch[1], keep_prob: 1.0})
-        print( "step %d, training accuracy %g"%(i, train_accuracy))
+        print("step %d, training accuracy %g"%(i, train_accuracy))
       train_step.run(feed_dict={x: batch[0], y: batch[1], keep_prob: 0.5})
     
-    print ("test accuracy %g"%accuracy.eval(feed_dict={
+    print("test accuracy %g"%accuracy.eval(feed_dict={
         x: mnist.test.images, y: mnist.test.labels, keep_prob: 1.0}))

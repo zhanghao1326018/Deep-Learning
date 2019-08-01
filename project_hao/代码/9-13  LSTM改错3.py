@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sat Jun  3 06:00:19 2017
 
-@author: 代码医生 qq群：40016981，公众号：xiangyuejiqiren
-@blog：http://blog.csdn.net/lijin6249
-"""
 import numpy as np
 import tensorflow as tf
 # 导入 MINST 数据集
@@ -16,7 +11,7 @@ n_steps = 28 # timesteps
 n_hidden = 128 # hidden layer num of features
 n_classes = 10  # MNIST 列别 (0-9 ，一共10类)
 batch_size = 128
-
+tf.reset_default_graph()
 
 # tf Graph input
 x = tf.placeholder("float", [None, n_steps, n_input])
@@ -25,7 +20,7 @@ y = tf.placeholder("float", [None, n_classes])
 
 
 
-tf.reset_default_graph()
+
  
 
 

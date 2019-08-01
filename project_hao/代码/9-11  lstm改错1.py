@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sat Jun  3 06:00:19 2017
 
-@author: 代码医生 qq群：40016981，公众号：xiangyuejiqiren
-@blog：http://blog.csdn.net/lijin6249
-"""
 import numpy as np
 import tensorflow as tf
 # 导入 MINST 数据集
@@ -29,8 +24,9 @@ mcell = tf.contrib.rnn.MultiRNNCell([lstm_cell]*3)
 
 
 
-
+# x_=tf.unstack(x,n_steps,1)
 outputs,states  = tf.nn.dynamic_rnn(mcell,x,dtype=tf.float32)
+outputs = tf.transpose(outputs,[1,0])
 pred = tf.contrib.layers.fully_connected(outputs,n_classes,activation_fn = None)
 
 

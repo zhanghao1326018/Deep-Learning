@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri May 12 16:44:50 2017
 
-@author: 代码医生 qq群：40016981，公众号：xiangyuejiqiren
-@blog：http://blog.csdn.net/lijin6249
-"""
 import tensorflow as tf
 from tensorflow.contrib import rnn
 # 导入 MINST 数据集
@@ -39,8 +34,9 @@ outputs, output_states = tf.nn.bidirectional_dynamic_rnn(lstm_fw_cell,lstm_bw_ce
                                               dtype=tf.float32)
 print(len(outputs),outputs[0].shape,outputs[1].shape)
 outputs = tf.concat(outputs, 2)
+print(outputs.shape,outputs[0].shape,outputs[1].shape)
 outputs = tf.transpose(outputs, [1, 0, 2])
-
+print(outputs.shape,outputs[0].shape,outputs[1].shape)
 pred = tf.contrib.layers.fully_connected(outputs[-1],n_classes,activation_fn = None)
 
 

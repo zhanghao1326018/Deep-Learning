@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue May  9 16:54:32 2017
-@author: 代码医生 qq群：40016981，公众号：xiangyuejiqiren
-@blog：http://blog.csdn.net/lijin6249
-"""
-
 
 import cifar10_input
 import tensorflow as tf
@@ -17,7 +11,6 @@ print("begin")
 images_train, labels_train = cifar10_input.inputs(eval_data = False,data_dir = data_dir, batch_size = batch_size)
 images_test, labels_test = cifar10_input.inputs(eval_data = True, data_dir = data_dir, batch_size = batch_size)
 print("begin data")
-
 
 
 def weight_variable(shape):
@@ -96,9 +89,9 @@ tf.train.start_queue_runners(sess=sess)
 for i in range(20000):
   image_batch, label_batch = sess.run([images_train, labels_train])
   label_b = np.eye(10,dtype=float)[label_batch] #one hot
-  
   train_step.run(feed_dict={x:image_batch, y: label_b,train:1},session=sess)
-  
+  print(global_step.eval(session=sess))
+
   if i%200 == 0:
     train_accuracy = accuracy.eval(feed_dict={
         x:image_batch, y: label_b},session=sess)
